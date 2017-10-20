@@ -5,7 +5,7 @@ header('Content-type: application/json');
 include "simple_html_dom.php";
 include "pretty_json.php";
 
-//$limit = $_GET["limit"];
+//$limit = $_GET["limit"]; 
 
 $url = "http://www.horariodebrasilia.org/";
 $html = file_get_html($url);
@@ -18,6 +18,8 @@ $teste = $content->plaintext;
 
 echo $teste;
 
+//array_push($info, 0) ;
+
 $url = "https://www.dolarhoje.net.br/";
 $html = file_get_html($url);
 
@@ -28,6 +30,18 @@ $info = array();
 $teste = $content->plaintext;
 
 echo " <br />".$teste;
+
+//infomoneytest
+$url = "http://www.infomoney.com.br/";
+$html = file_get_html($url);
+
+$content = $html->find('.ticker',0);
+
+$info = array();
+
+$teste = $content->plaintext;
+
+echo $teste;
 
 /*
 foreach($content->find('h2.title') as $elemento){
@@ -78,3 +92,4 @@ print_r(pretty_json(json_encode($info)));
 
 */
 ?>
+
