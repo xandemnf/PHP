@@ -1,6 +1,4 @@
 <?php
-ini_set("memory_limit","100M");
-header('Content-type: application/json');
 
 include "simple_html_dom.php";
 include "pretty_json.php";

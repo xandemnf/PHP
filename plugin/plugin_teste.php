@@ -27,7 +27,8 @@
 
 		$html = file_get_html($url);
 
-		$titles = $html->find('h3');
+		//Multiplas Classes devem ser separadas por vígula
+		$titles = $html->find('div.enigma_service_detail h3 a, div.media-body h3 a'); 
 
 	    foreach ($titles as $title) {
 	    	echo '<b>Título nº ' . $counter . ': </b><br />';
