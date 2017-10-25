@@ -19,44 +19,95 @@
 		
 		$counter = 1;
 
-		//$html = new simple_html_dom();
-
-		//$html = load_file('https://www.juanwilde.com/');
-/*
-		$url = 'https://www.juanwilde.com/';
-
-		$html = file_get_html($url);
-
-		//Multiplas Classes devem ser separadas por vígula
-		$titles = $html->find('div.enigma_service_detail h3 a, div.media-body h3 a'); 
-
-	    foreach ($titles as $title) {
-	    	echo '<b>Título nº ' . $counter . ': </b><br />';
-	    	echo $title->innertext;
-	    	echo '<hr /><br />';
-	    	$counter++;
-	    }*/
-
-//teste com o da uol
-
 	    $url = 'https://economia.uol.com.br/cotacoes/';
 
 		$html = file_get_html($url);
 
 		//Multiplas Classes devem ser separadas por vígula
-		$rows = $html->find('table.borda, table.mod-grafico-wide, table.quatro-colunas td'); 
+		$rows = $html->find('table.borda, table.mod-grafico-wide, table.quatro-colunas, td'); 	
 
-		//$rows = $tabelas->find('tr',0)
-
-
-
-
-	    foreach ($rows as $row) {
+		//Desconmente o bloco abaixo para imprimir os valores extraidos linha a linha para visualizar melhor o comprotamento do foreach
+		/*
+	   foreach ($rows as $row) {
 	    	echo '<b>Achados nº ' . $counter . ': </b><br />';
 	    	echo $row->outertext;
 	    	echo '<hr /><br />';
 	    	$counter++;
-	    }
+		} */
+
+		foreach ($rows as $row) {
+	    	//Dolar Comercial
+	    	if($counter==7){ 
+	    		$dolar_com_nome = $row->innertext;
+	    	}
+   	        if($counter==8){ 
+	    		$dolar_com_compra = $row->innertext;
+	    	}
+    	    if($counter==9){ 
+    			$dolar_com_venda = $row->innertext;
+    	   	}
+    	    if($counter==10){ 
+    			$dolar_com_variacao = $row->innertext;
+	    	}
+
+	    	//Dolar Turismo
+	    	if($counter==11){ 
+	    		$dolar_tur_nome = $row->innertext;
+	    	}
+   	        if($counter==12){ 
+	    		$dolar_tur_compra = $row->innertext;
+	    	}
+    	    if($counter==13){ 
+    			$dolar_tur_venda = $row->innertext;
+    	   	}
+    	    if($counter==14){ 
+    			$dolar_tur_variacao = $row->innertext;
+	    	}
+
+	    	//Euro
+	    	if($counter==15){ 
+	    		$euro_nome = $row->innertext;
+	    	}
+   	        if($counter==16){ 
+	    		$euro_compra = $row->innertext;
+	    	}
+    	    if($counter==17){ 
+    			$euro_venda = $row->innertext;
+    	   	}
+    	    if($counter==18){ 
+    			$euro_variacao = $row->innertext;
+	    	}
+
+	    	//Libra
+	    	if($counter==19){ 
+	    		$libra_nome = $row->innertext;
+	    	}
+   	        if($counter==20){ 
+	    		$libra_compra = $row->innertext;
+	    	}
+    	    if($counter==21){ 
+    			$libra_venda = $row->innertext;
+    	   	}
+    	    if($counter==22){ 
+    			$libra_variacao = $row->innertext;
+	    	}
+
+	    	//Peso Argentino
+	    	if($counter==23){ 
+	    		$pes_arg_nome = $row->innertext;
+	    	}
+   	        if($counter==24){ 
+	    		$pes_arg_compra = $row->innertext;
+	    	}
+    	    if($counter==25){ 
+    			$pes_arg_venda = $row->innertext;
+    	   	}
+    	    if($counter==26){ 
+    			$pes_arg_variacao = $row->innertext;
+	    	}
+
+	    	$counter++;
+		} 
 
 
 
@@ -64,7 +115,15 @@
 
 
 ?>	
-
+<!--
+<tr>
+      <td style="padding: 3px 5px;" colspan="2">Dólar Comercial</td>
+	  <td style="padding: 3px 5px;" colspan="2">Dólar Turismo</td>
+      <td style="padding: 3px 5px;" colspan="2">Euro</td>
+	  <td style="padding: 3px 5px;" colspan="2">Euro</td>
+	  <td style="padding: 3px 5px;" colspan="2">BitCoin</td>
+   </tr>
+-->
 
 <div class="container">
    <div class="row">
@@ -73,35 +132,41 @@
 
 <table cellspacing="0" border="1";>
    <tr>
-      <td style="padding: 3px 5px;" colspan="2">Dólar Comercial</td>
-	  <td style="padding: 3px 5px;" colspan="2">Dólar Turismo</td>
-      <td style="padding: 3px 5px;" colspan="2">Euro Comercial</td>
-	  <td style="padding: 3px 5px;" colspan="2">Euro Turismo</td>
-	  <td style="padding: 3px 5px;" colspan="2">BitCoin</td>
+      <td style="padding: 3px 5px;" colspan="2">Moeda</td>
+	  <td style="padding: 3px 5px;" colspan="2">Compra</td>
+      <td style="padding: 3px 5px;" colspan="2">Venda</td>
+	  <td style="padding: 3px 5px;" colspan="2">Variação</td>
    </tr>
    <tr>
-   	  <!--Variação no dia-->
-      <td style="padding: 3px 5px;">var</td>
-	  <!--Valor em Reais-->
-	  <td style="padding: 3px 5px;">R$</td>
-	   <!--Variação no dia-->
-      <td style="padding: 3px 5px;">var</td>
-	  <!--Valor em Reais-->
-	  <td style="padding: 3px 5px;">R$</td>
-	  <!--Variação no dia-->
-      <td style="padding: 3px 5px;">var</td>
-	  <!--Valor em Reais-->
-	  <td style="padding: 3px 5px;">R$</td>
-	  <!--Variação no dia-->
-      <td style="padding: 3px 5px;">var</td>
-	  <!--Valor em Reais-->
-	  <td style="padding: 3px 5px;">R$</td>
-	  <!--Variação no dia-->
-      <td style="padding: 3px 5px;">var</td>
-	  <!--Valor em Reais-->
-	  <td style="padding: 3px 5px;">R$</td>
-	 
-    </tr>
+   	  <td style="padding: 3px 5px;" colspan="2"><?= $dolar_com_nome?></td>
+	  <td style="padding: 3px 5px;" colspan="2"><?= $dolar_com_compra?></td>
+      <td style="padding: 3px 5px;" colspan="2"><?= $dolar_com_venda?></td>
+	  <td style="padding: 3px 5px;" colspan="2"><?= $dolar_com_variacao?></td>
+   </tr>
+   <tr>
+   	  <td style="padding: 3px 5px;" colspan="2"><?= $dolar_tur_nome?></td>
+	  <td style="padding: 3px 5px;" colspan="2"><?= $dolar_tur_compra?></td>
+      <td style="padding: 3px 5px;" colspan="2"><?= $dolar_tur_venda?></td>
+	  <td style="padding: 3px 5px;" colspan="2"><?= $dolar_tur_variacao?></td>
+   </tr>
+   <tr>
+   	  <td style="padding: 3px 5px;" colspan="2"><?= $euro_nome?></td>
+	  <td style="padding: 3px 5px;" colspan="2"><?= $euro_compra?></td>
+      <td style="padding: 3px 5px;" colspan="2"><?= $euro_venda?></td>
+	  <td style="padding: 3px 5px;" colspan="2"><?= $euro_variacao?></td>
+   </tr>
+   <tr>
+   	  <td style="padding: 3px 5px;" colspan="2"><?= $libra_nome?></td>
+	  <td style="padding: 3px 5px;" colspan="2"><?= $libra_compra?></td>
+      <td style="padding: 3px 5px;" colspan="2"><?= $libra_venda?></td>
+	  <td style="padding: 3px 5px;" colspan="2"><?= $libra_variacao?></td>
+   </tr>
+   <tr>
+   	  <td style="padding: 3px 5px;" colspan="2"><?= $pes_arg_nome?></td>
+	  <td style="padding: 3px 5px;" colspan="2"><?= $pes_arg_compra?></td>
+      <td style="padding: 3px 5px;" colspan="2"><?= $pes_arg_venda?></td>
+	  <td style="padding: 3px 5px;" colspan="2"><?= $pes_arg_variacao?></td>
+   </tr>
 
 
 </table>
