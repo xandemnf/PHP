@@ -22,7 +22,7 @@
 		//$html = new simple_html_dom();
 
 		//$html = load_file('https://www.juanwilde.com/');
-
+/*
 		$url = 'https://www.juanwilde.com/';
 
 		$html = file_get_html($url);
@@ -35,7 +35,33 @@
 	    	echo $title->innertext;
 	    	echo '<hr /><br />';
 	    	$counter++;
+	    }*/
+
+//teste com o da uol
+
+	    $url = 'https://economia.uol.com.br/cotacoes/';
+
+		$html = file_get_html($url);
+
+		//Multiplas Classes devem ser separadas por vígula
+		$rows = $html->find('table.borda, table.mod-grafico-wide, table.quatro-colunas td'); 
+
+		//$rows = $tabelas->find('tr',0)
+
+
+
+
+	    foreach ($rows as $row) {
+	    	echo '<b>Achados nº ' . $counter . ': </b><br />';
+	    	echo $row->outertext;
+	    	echo '<hr /><br />';
+	    	$counter++;
 	    }
+
+
+
+
+
 
 ?>	
 
