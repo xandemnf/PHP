@@ -109,28 +109,14 @@
 	    	$counter++;
 		} 
 
-
-
-
-
-
 ?>	
-<!--
-<tr>
-      <td style="padding: 3px 5px;" colspan="2">Dólar Comercial</td>
-	  <td style="padding: 3px 5px;" colspan="2">Dólar Turismo</td>
-      <td style="padding: 3px 5px;" colspan="2">Euro</td>
-	  <td style="padding: 3px 5px;" colspan="2">Euro</td>
-	  <td style="padding: 3px 5px;" colspan="2">BitCoin</td>
-   </tr>
--->
 
 <div class="container">
    <div class="row">
    		<h1>Plugin</h1>
    </div>
 
-<table cellspacing="0" border="1";>
+<table cellspacing="0" border="1" style="text-align: center">
    <tr>
       <td style="padding: 3px 5px;" colspan="2">Moeda</td>
 	  <td style="padding: 3px 5px;" colspan="2">Compra</td>
